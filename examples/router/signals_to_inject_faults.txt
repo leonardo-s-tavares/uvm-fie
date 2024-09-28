@@ -1,0 +1,98 @@
+_________________________
+PASSED (Before: SIM ERROR: (E112) get interface failed: port is not bound: port 'router.port_2' (sc_in)).
++ Found that the simulation hang comes from adding:
+    SC_CTOR(module):
+        signal_fault_target_from_in.write(signal.read());
+  + When removing this line, a simulation hang appears, caused by the connections with the fault target signals during instantiations.
+
+router0->x_id_p<sc_uint<32>>
+
+router0->y_id_p<sc_uint<32>>
+_________________________
+PASSED (Before: SIM ERROR: (E112) get interface failed: port is not bound: port 'router.lxin.port_5' (sc_in)).
+
+router0->lin0->x_id_p<sc_uint<32>>
+router0->nin0->x_id_p<sc_uint<32>>
+router0->ein0->x_id_p<sc_uint<32>>
+router0->sin0->x_id_p<sc_uint<32>>
+router0->win0->x_id_p<sc_uint<32>>
+
+router0->lin0->y_id_p<sc_uint<32>>
+router0->nin0->y_id_p<sc_uint<32>>
+router0->ein0->y_id_p<sc_uint<32>>
+router0->sin0->y_id_p<sc_uint<32>>
+router0->win0->y_id_p<sc_uint<32>>
+_________________________
+PASSED.
+Required change in the TB (sc_main.cpp).
+
+router0->lin0->flow_in0->state<ifc_fsm[0:7]>
+router0->nin0->flow_in0->state<ifc_fsm[0:7]>
+router0->ein0->flow_in0->state<ifc_fsm[0:7]>
+router0->sin0->flow_in0->state<ifc_fsm[0:7]>
+router0->win0->flow_in0->state<ifc_fsm[0:7]>
+_________________________
+PASSED.
+Required change in the TB (sc_main.cpp).
+
+router0->lin0->buffering0->fifo_r<sc_bv<32>>
+router0->nin0->buffering0->fifo_r<sc_bv<32>>
+router0->ein0->buffering0->fifo_r<sc_bv<32>>
+router0->sin0->buffering0->fifo_r<sc_bv<32>>
+router0->win0->buffering0->fifo_r<sc_bv<32>>
+_________________________
+ALREADY WORKING, NO CHANGE REQUIRED.
+
+router0->lin0->buffering0->rd_ptr_r<sc_uint<32>>
+router0->nin0->buffering0->rd_ptr_r<sc_uint<32>>
+router0->ein0->buffering0->rd_ptr_r<sc_uint<32>>
+router0->sin0->buffering0->rd_ptr_r<sc_uint<32>>
+router0->win0->buffering0->rd_ptr_r<sc_uint<32>>
+_________________________
+PASSED (Before: SIM ERROR: (E112) get interface failed: port is not bound: port 'router.lxin.ic.port_1' (sc_in)).
+
+router0->lin0->routing0->x_id_p0<sc_uint<32>>
+router0->nin0->routing0->x_id_p0<sc_uint<32>>
+router0->ein0->routing0->x_id_p0<sc_uint<32>>
+router0->sin0->routing0->x_id_p0<sc_uint<32>>
+router0->win0->routing0->x_id_p0<sc_uint<32>>
+
+router0->lin0->routing0->y_id_p0<sc_uint<32>>
+router0->nin0->routing0->y_id_p0<sc_uint<32>>
+router0->ein0->routing0->y_id_p0<sc_uint<32>>
+router0->sin0->routing0->y_id_p0<sc_uint<32>>
+router0->win0->routing0->y_id_p0<sc_uint<32>>
+_________________________
+PASSED.
+Required change in the TB (sc_main.cpp).
+Bugs found in the converter:
++ Conversion happened even without giving the enum's name:
+  + Creation of #defines
+  + Replacement of "switch(state)" by "switch(state.read())"
++ Duplicating lines in output file when informing multiple enums. 
++ Replacing the enum's variable name by sc_uint<32>.
+
+router0->lin0->routing0->state<ic_fsm[0:13]>
+router0->nin0->routing0->state<ic_fsm[0:13]>
+router0->ein0->routing0->state<ic_fsm[0:13]>
+router0->sin0->routing0->state<ic_fsm[0:13]>
+router0->win0->routing0->state<ic_fsm[0:13]>
+_________________________
+PASSED.
+Required change in the TB (sc_main.cpp).
+
+router0->lout0->arbitration0->state<oc_fsm[0:7]>
+router0->nout0->arbitration0->state<oc_fsm[0:7]>
+router0->eout0->arbitration0->state<oc_fsm[0:7]>
+router0->sout0->arbitration0->state<oc_fsm[0:7]>
+router0->wout0->arbitration0->state<oc_fsm[0:7]>
+_________________________
+PASSED.
+Required change in the TB (sc_main.cpp).
+
+router0->lout0->flow_out0->state<ofc_fsm[0:2]>
+router0->nout0->flow_out0->state<ofc_fsm[0:2]>
+router0->eout0->flow_out0->state<ofc_fsm[0:2]>
+router0->sout0->flow_out0->state<ofc_fsm[0:2]>
+router0->wout0->flow_out0->state<ofc_fsm[0:2]>
+

@@ -1,0 +1,7 @@
+**/*.o
+**/*.x
+**/*/build/
+build/
+.cproject
+.project
+.vscode

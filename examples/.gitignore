@@ -1,0 +1,5 @@
+./matrix/fi_lib
+./TMR-Matrix/fi_lib
+**/*.o
+**/*.x
+**/*/build
